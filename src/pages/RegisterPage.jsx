@@ -1,5 +1,7 @@
 import React from 'react'
-import Register from "../components/RegisterComponent"
+import Register from '../components/RegisterComponent'
+import Sidebar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
 
 function RegisterPage() {
   return (
@@ -9,7 +11,7 @@ function RegisterPage() {
                     <Sidebar />
                 </div>
                 <div className='w-full'>
-                    <div className="md:hidden">
+                    <div >
                         <Navbar />
                     </div>
                     <Register/>

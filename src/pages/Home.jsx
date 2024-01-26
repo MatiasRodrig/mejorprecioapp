@@ -11,7 +11,7 @@ function Home() {
                     <Sidebar />
                 </div>
                 <div className='w-full'>
-                    <div className="md:hidden">
+                    <div>
                         <Navbar />
                     </div>
                     <Table />

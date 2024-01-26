@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
+import {registerRequest} from '../api/auth'
 import { Button, Label, TextInput } from 'flowbite-react';
 
 function RegisterComponent() {
@@ -11,42 +11,44 @@ function RegisterComponent() {
 
   return (
     <>
-      <form onSubmit={handleSubmit((values) => {
+      <form onSubmit={handleSubmit(async (values) => {
         console.log(values)
+        const res = await registerRequest(values)
+        console.log(res)
       })} className="flex max-w-md flex-col gap-4">
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="name2" value="Nombre" />
+            <Label value="Nombre" />
           </div>
-          <TextInput type="text" {...register('name', { require: true })} className="mb-2 block" placeholder='Juan' />
+          <TextInput type="text" {...register('nombre', { require: true })} className="mb-2 block" placeholder='Juan' />
         </div>
 
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="lastname2" value="Apellido" />
+            <Label value="Apellido" />
           </div>
-          <TextInput type="text" {...register('lastname', { required: true })} placeholder='Pérez' />
+          <TextInput type="text" {...register('apellido', { required: true })} placeholder='Pérez' />
         </div>
 
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="phone2" value="Telefono" />
+            <Label value="Telefono" />
           </div>
-          <TextInput type='number' {...register('phone', { required: true })} />
+          <TextInput type='number' {...register('telefono', { required: true })} placeholder='3755123456' />
         </div>
 
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="email2" value="Email" />
+            <Label value="Email" />
           </div>
           <TextInput type="email" {...register('email', { required: true })} placeholder='mejor@precio.com' />
         </div>
 
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password2" value="Your password" />
+            <Label value="Your password" />
           </div>
-          <TextInput type="password" {...register('password', { required: true })} placeholder='******' minLength={8} />
+          <TextInput type="password" {...register('password', { required: true })} placeholder='a-z, una mayuscula, un número' minLength={8} />
         </div>
 
 
