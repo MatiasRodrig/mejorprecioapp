@@ -5,11 +5,11 @@ import { Button, Navbar } from 'flowbite-react';
 function NavbarComponent() {
     return (
         <Navbar fluid rounded className='w-full' >
-            <div className=" md:order-2 ">
+            <div className=" w-full flex justify-end md:order-2  ">
                 <Navbar.Toggle />
                 <Button >Agregar Producto</Button>
             </div>
-            <Navbar.Collapse className="md:hidden" >
+            <Navbar.Collapse className=" md:hidden" >
                 <Navbar.Link href="#" active>
                     Inicio
                 </Navbar.Link>

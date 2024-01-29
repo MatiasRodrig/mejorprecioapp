@@ -12,9 +12,11 @@ function RegisterPage() {
                 </div>
                 <div className='w-full'>
                     <div >
-                        <Navbar />
-                    </div>
+                      <Navbar />
+                      <div className='w-full flex justify-center'>
                     <Register/>
+                      </div>
+                    </div>
                 </div>
             </div>
         </>
