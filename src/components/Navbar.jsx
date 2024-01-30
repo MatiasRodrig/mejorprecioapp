@@ -7,7 +7,7 @@ function NavbarComponent() {
         <Navbar fluid rounded className='w-full' >
             <div className=" w-full flex justify-end md:order-2  ">
                 <Navbar.Toggle />
-                <Button >Agregar Producto</Button>
+                <Button className='bg-blue-600' >Agregar Producto</Button>
             </div>
             <Navbar.Collapse className=" md:hidden" >
                 <Navbar.Link href="#" active>

@@ -22,75 +22,77 @@ function RegisterComponent() {
 
   return (
     <>
-    
-    
 
-      <form onSubmit={handleSubmit(async (values) => {
-        console.log(values)
-        signUp(values)
-      })} className="w-full flex flex-col items-center">
-        <div className='w-4/12 mt-5'>
-          <div className="mb-2 block">
-            <Label value="Nombre" />
+      <div className='w-full flex justify-center items-center'>
+
+
+        <form onSubmit={handleSubmit(async (values) => {
+          console.log(values)
+          signUp(values)
+        })} className="w-4/6 flex justify-center items-center flex-col my-5 rounded-md">
+          <div className='w-6/12 mt-5'>
+            <div className="mb-2 block">
+              <Label value="Nombre" />
+            </div>
+            <TextInput type="text" {...register('nombre', { required: true })} className="px-50 bg-blue-800 border-2 border-blue-400 rounded-md" placeholder='Juan' />
           </div>
-          <TextInput type="text" {...register('nombre', { required: true })} className="px-50" placeholder='Juan' />
-        </div>
 
-        {errors.nombre && (
-          <Alert color='failure' className='p-1'> Nombre es requerido </Alert>
-        )}
+          {errors.nombre && (
+            <Alert color='failure' className='p-1'> Nombre es requerido </Alert>
+          )}
 
-        <div className='w-4/12 mt-5'>
-          <div className="mb-2 block">
-            <Label value="Apellido" />
+          <div className='w-6/12 mt-5'>
+            <div className="mb-2 block">
+              <Label value="Apellido" />
+            </div>
+            <TextInput type="text" {...register('apellido', { required: true })} placeholder='Pérez' className='w-[150] bg-blue-800 border-2 border-blue-400 rounded-md ' />
           </div>
-          <TextInput type="text" {...register('apellido', { required: true })} placeholder='Pérez' className='w-[150]' />
-        </div>
 
-        {errors.apellido && (
-          <Alert color='failure' className='p-1'> Apellido es requerido </Alert>
-        )}
+          {errors.apellido && (
+            <Alert color='failure' className='p-1'> Apellido es requerido </Alert>
+          )}
 
-        <div className='w-4/12 mt-5'>
-          <div className="mb-2 block">
-            <Label value="Telefono" />
+          <div className='w-6/12 mt-5'>
+            <div className="mb-2 block">
+              <Label value="Telefono" />
+            </div>
+            <TextInput type='number' {...register('telefono', { required: true })} placeholder='3755123456' className='bg-blue-800 border-2 border-blue-400 rounded-md' />
           </div>
-          <TextInput type='number' {...register('telefono', { required: true })} placeholder='3755123456' />
-        </div>
 
-        {errors.telefono && (
-          <Alert color='failure' className='p-1'> Telefono es requerido </Alert>
-        )}
+          {errors.telefono && (
+            <Alert color='failure' className='p-1'> Telefono es requerido </Alert>
+          )}
 
-        <div className='w-4/12 mt-5'>
-          <div className="mb-2 block">
-            <Label value="Email" />
+          <div className='w-6/12 mt-5'>
+            <div className="mb-2 block">
+              <Label value="Email" />
+            </div>
+            <TextInput type="email" {...register('email', { required: true })} placeholder='mejor@precio.com' className='bg-blue-800 border-2 border-blue-400 rounded-md' />
           </div>
-          <TextInput type="email" {...register('email', { required: true })} placeholder='mejor@precio.com' />
-        </div>
 
-        {errors.email && (
-          <Alert color='failure' className='p-1'> Email es requerido </Alert>
-        )}
+          {errors.email && (
+            <Alert color='failure' className='p-1'> Email es requerido </Alert>
+          )}
 
-        <div className='w-4/12 mt-5'>
-          <div className="mb-2 block">
-            <Label value="Contraseña" />
+          <div className='w-6/12 mt-5'>
+            <div className="mb-2 block">
+              <Label value="Contraseña" />
+            </div>
+            <TextInput type="password" {...register('password', { required: true })} placeholder='a-z, una mayuscula, un número' minLength={8} className='bg-blue-800 border-2 border-blue-400 rounded-md' />
           </div>
-          <TextInput type="password" {...register('password', { required: true })} placeholder='a-z, una mayuscula, un número' minLength={8} />
-        </div>
 
-        {errors.password && (
-          <Alert color='failure' className='p-1'> La contraseña es requerida </Alert>
-        )}
+          {errors.password && (
+            <Alert color='failure' className='p-1'> La contraseña es requerida </Alert>
+          )}
 
-        {error && <Alert>{error}</Alert>}
+          {error && <Alert>{error}</Alert>}
 
 
-        <Button type='submit' className='m-4' >
-          Registrarse
-        </Button>
-      </form>
+          <Button type='submit' className='m-4  bg-blue-600' >
+            Registrarse
+          </Button>
+        </form>
+      </div>
     </>
   )
 }

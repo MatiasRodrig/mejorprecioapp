@@ -1,5 +1,5 @@
-import { createContext, useState, useContext } from "react";
-import { registerRequest } from '../api/auth'
+import { createContext, useState, useContext, useEffect } from "react";
+import { registerRequest, loginRequest } from '../api/auth'
 export const AuthContext = createContext();
 
 
@@ -14,7 +14,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [error, setError] = useState(null) // Nuevo estado para el mensaje de error
+    const [error, setError] = useState([])
 
     const signUp = async (user) => {
         try {
@@ -22,23 +22,48 @@ export const AuthProvider = ({ children }) => {
             console.log(res.data)
             setUser(res.data)
             setIsAuthenticated(true)
-            setError(null) // Limpiar el mensaje de error cuando el registro es exitoso
-        } catch (err) {
-            console.log(err)
-            if (err.response && err.response.data) {
-                setError(err.response.data.message) // Actualizar el estado con el mensaje de error
+            setError([]) // Limpiar el mensaje de error cuando el registro es exitoso
+        } catch (error) {
+            console.log(error)
+            if (error.response && error.response.data) {    
+                setError(error.response.data.message) // Actualizar el estado con el mensaje de error
             } else {
                 setError('Ocurrió un error al registrarse.') // Mensaje de error genérico
             }
         }
     }
 
+    const signIn = async (user) => {
+        try {
+            const res = await loginRequest(user)
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+            if (error.response && error.response.data) {
+                setError(error.response.data.message) // Actualizar el estado con el mensaje de error
+            } else {
+                setError('Ocurrió un error al registrarse.') // Mensaje de error genérico
+            }
+        }
+    }
+
+useEffect(() => {
+    if (error.length > 0) {
+       const timer = setTimeout(() => {
+            setError([])
+       }, 5000)
+        return () => clearTimeout(timer)
+    }
+}, [error])
+
+
     return (
         <AuthContext.Provider value={{
             signUp,
+            signIn,
             user,
             isAuthenticated,
-            error, // Pasar el mensaje de error al contexto
+            error, 
         }}>
             {children}
         </AuthContext.Provider>

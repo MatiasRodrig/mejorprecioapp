@@ -13,7 +13,7 @@ function SidebarComponent() {
                     MejorPrecio
                 </Sidebar.Logo>
                 <Sidebar.Items>
-                    <Sidebar.ItemGroup>
+                    <Sidebar.ItemGroup> 
                         <Sidebar.Item href="/" icon={HiChartPie}>
                             Inicio
                         </Sidebar.Item>
