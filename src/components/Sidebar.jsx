@@ -21,7 +21,7 @@ function SidebarComponent() {
                             Precios
                         </Sidebar.Item>
                         <Sidebar.Item href="#" icon={HiInbox}>
-                            Mercado
+                            Mercados
                         </Sidebar.Item>
                         <Sidebar.Item href="#" icon={HiUser}>
                            Ventas en Colonias

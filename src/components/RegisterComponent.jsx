@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Button, Label, TextInput, Alert } from 'flowbite-react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function RegisterComponent() {
   ;
@@ -91,6 +92,9 @@ function RegisterComponent() {
           <Button type='submit' className='m-4  bg-blue-600' >
             Registrarse
           </Button>
+          <h4>
+            ¿Ya tenés una cuenta? Inicia Sesión <NavLink to="/login">Acá</NavLink>
+          </h4>
         </form>
       </div>
     </>

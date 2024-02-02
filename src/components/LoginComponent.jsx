@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Label, TextInput, Alert } from 'flowbite-react';
 import { useAuth } from '../context/AuthContext';
+import { NavLink } from 'react-router-dom';
 
 function LoginComponent() {
 
@@ -9,16 +10,16 @@ function LoginComponent() {
 
     const { signIn, error } = useAuth();
 
-    const onSubmit = handleSubmit(async data => {
-        signIn(data)
-    })
 
 
     return (
         <>
             <div className='w-full flex justify-center items-center'>
 
-                <form onSubmit={onSubmit} className="w-4/6 flex justify-center items-center flex-col my-10">
+                <form onSubmit={handleSubmit(async (values) => {
+                    console.log(values)
+                    signIn(values)
+                })} className="w-4/6 flex justify-center items-center flex-col my-10">
                     <div className='w-6/12 mt-5'>
                         <div className="mb-2 block">
                             <Label value="Email" />
@@ -41,12 +42,16 @@ function LoginComponent() {
                         <Alert color='failure' className='p-1'> La contraseña es requerida </Alert>
                     )}
 
+
                     {error && <Alert>{error}</Alert>}
 
 
                     <Button type='submit' className='m-4 bg-blue-600' >
                         Iniciar Sesión
                     </Button>
+                    <h4>
+                        ¿No tenés una cuenta todavia? Registrate <NavLink to="/register">Acá</NavLink>
+                    </h4>
                 </form>
             </div>
         </>

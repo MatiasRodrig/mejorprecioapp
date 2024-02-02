@@ -5,6 +5,8 @@ import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import PerfilPage from './pages/Perfil';
 import { AuthProvider } from './context/AuthContext';
+import AddProductsPage from './pages/AddProductsPage';
+import AddVentasPage from './pages/AddVentasPage';
 
 
 function App() {
@@ -16,7 +18,16 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path='/perfil' element={<PerfilPage/>}/>
+            <Route/>
+
+
+            <Route>
+              <Route path='/perfil' element={<PerfilPage />} />
+              <Route path='/perfil' element={<AddProductsPage />} />
+              <Route path='/perfil' element={<AddVentasPage />} />
+            </Route>
+
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>

@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const useAuth = () => {
     const context = useContext(AuthContext)
     if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider')
+        throw new Error('useAuth debe utilizarse dentro de un AuthProvider')
     }
     return context
 }
@@ -22,13 +22,13 @@ export const AuthProvider = ({ children }) => {
             console.log(res.data)
             setUser(res.data)
             setIsAuthenticated(true)
-            setError([]) // Limpiar el mensaje de error cuando el registro es exitoso
+            setError([])
         } catch (error) {
             console.log(error)
             if (error.response && error.response.data) {    
-                setError(error.response.data.message) // Actualizar el estado con el mensaje de error
+                setError(error.response.data.message)
             } else {
-                setError('Ocurrió un error al registrarse.') // Mensaje de error genérico
+                setError('Ocurrió un error al registrarse.')
             }
         }
     }
@@ -40,9 +40,9 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error)
             if (error.response && error.response.data) {
-                setError(error.response.data.message) // Actualizar el estado con el mensaje de error
+                setError(error.response.data.message) 
             } else {
-                setError('Ocurrió un error al registrarse.') // Mensaje de error genérico
+                setError('Ocurrió un error al iniciar sesión.') 
             }
         }
     }
