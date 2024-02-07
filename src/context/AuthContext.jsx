@@ -37,6 +37,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await loginRequest(user)
             console.log(res)
+            setIsAuthenticated(true)
+            setUser(res.data)
         } catch (error) {
             console.log(error)
             if (error.response && error.response.data) {
@@ -56,6 +58,10 @@ useEffect(() => {
     }
 }, [error])
 
+    // Quedé en el minuto 3:10:27 de video 
+    useEffect(() => {
+        
+    })
 
     return (
         <AuthContext.Provider value={{
