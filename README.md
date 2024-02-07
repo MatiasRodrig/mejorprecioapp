@@ -31,7 +31,7 @@ If you're interested in contributing to MejorPrecio, please read our contributio
 
 MejorPrecio is under the MIT license.
 
-[!important] 
+>[!IMPORTANT] 
 
 ### Español
 

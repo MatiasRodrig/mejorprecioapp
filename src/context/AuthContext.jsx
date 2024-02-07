@@ -1,5 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { registerRequest, loginRequest } from '../api/auth'
+import Cookies from 'js-cookie'
+
+
 export const AuthContext = createContext();
 
 
@@ -58,10 +61,14 @@ useEffect(() => {
     }
 }, [error])
 
-    // Quedé en el minuto 3:10:27 de video 
+    // Quedé en el minuto 3:11:16 de video 
     useEffect(() => {
-        
-    })
+        const cookies = Cookies.get()
+
+        if (cookies.token) {
+            console.log('token')
+        }
+    }, [])
 
     return (
         <AuthContext.Provider value={{
