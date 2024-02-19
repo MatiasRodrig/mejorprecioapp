@@ -8,12 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 function RegisterComponent() {
-  ;
+
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { signUp, isAuthenticated, error } = useAuth();
+  const { signUp, isAuthenticated, error, user } = useAuth();
   const navigate = useNavigate();
+
+
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,7 +27,8 @@ function RegisterComponent() {
   return (
     <>
 
-      <div className='w-full flex justify-center items-center'>
+      <div className='w-full flex justify-center items-center'
+      >
 
 
         <form onSubmit={handleSubmit(async (values) => {
@@ -35,7 +39,7 @@ function RegisterComponent() {
             <div className="mb-2 block">
               <Label value="Nombre" />
             </div>
-            <TextInput type="text" {...register('nombre', { required: true })} className="px-50 bg-blue-800 border-2 border-blue-400 rounded-md" placeholder='Juan' />
+            <TextInput type="text" {...register('nombre', { required: true })} className="px-50 border-blue-400 rounded-md" placeholder='Juan' />
           </div>
 
           {errors.nombre && (
@@ -46,7 +50,7 @@ function RegisterComponent() {
             <div className="mb-2 block">
               <Label value="Apellido" />
             </div>
-            <TextInput type="text" {...register('apellido', { required: true })} placeholder='Pérez' className='w-[150] bg-blue-800 border-2 border-blue-400 rounded-md ' />
+            <TextInput type="text" {...register('apellido', { required: true })} placeholder='Pérez' className='w-[150]  border-blue-400 rounded-md ' />
           </div>
 
           {errors.apellido && (
@@ -57,7 +61,7 @@ function RegisterComponent() {
             <div className="mb-2 block">
               <Label value="Telefono" />
             </div>
-            <TextInput type='number' {...register('telefono', { required: true })} placeholder='3755123456' className='bg-blue-800 border-2 border-blue-400 rounded-md' />
+            <TextInput type='number' {...register('telefono', { required: true })} placeholder='3755123456' className=' border-blue-400 rounded-md' />
           </div>
 
           {errors.telefono && (
@@ -68,7 +72,7 @@ function RegisterComponent() {
             <div className="mb-2 block">
               <Label value="Email" />
             </div>
-            <TextInput type="email" {...register('email', { required: true })} placeholder='mejor@precio.com' className='bg-blue-800 border-2 border-blue-400 rounded-md' />
+            <TextInput type="email" {...register('email', { required: true })} placeholder='mejor@precio.com' className=' border-blue-400 rounded-md' />
           </div>
 
           {errors.email && (
@@ -79,14 +83,19 @@ function RegisterComponent() {
             <div className="mb-2 block">
               <Label value="Contraseña" />
             </div>
-            <TextInput type="password" {...register('password', { required: true })} placeholder='a-z, una mayuscula, un número' minLength={8} className='bg-blue-800 border-2 border-blue-400 rounded-md' />
+            <TextInput type="password" {...register('password', { required: true })} placeholder='a-z, una mayuscula, un número' minLength={8} className=' border-blue-400 rounded-md' />
           </div>
 
           {errors.password && (
             <Alert color='failure' className='p-1'> La contraseña es requerida </Alert>
           )}
 
-          {error && <Alert>{error}</Alert>}
+          {
+            Array.isArray(error) ? error.map((error, i) => (
+              <Alert color='failure' className='p-1' key={i}>{error}</Alert>
+            )) : <Alert color='failure' className='p-1'>'Error al registrarse'</Alert>
+          }
+
 
 
           <Button type='submit' className='m-4  bg-blue-600' >

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function NavbarComponent() {
     return (
         <Navbar fluid rounded className='w-full' >
-            <div className=" w-full flex justify-end md:order-2  ">
+            <div className=" w-full flex justify-around md:order-2  ">
                 <Navbar.Toggle />
                 <Button className='bg-blue-600'>
                     <Link to={'/agregarproducto'} className='text-white'>
