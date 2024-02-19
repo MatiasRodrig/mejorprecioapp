@@ -16,7 +16,6 @@ MejorPrecio is a web application that allows users to post and compare prices fr
 - **Passport**: Passport is used to handle user authentication.
 - **Morgan**: Morgan is used to log server requests.
 - **Bcrypt**: Bcrypt is used to encrypt user passwords before storing them.
-- **Connect-flash**: Connect-flash is used to send flash messages between views.
 
 ## Installation
 
