@@ -9,7 +9,7 @@ function LoginComponent() {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const { signIn, error, isAuthenticated } = useAuth();
+    const { signIn, error, isAuthenticated, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
     const onSubmit = handleSubmit((data) => {
@@ -18,10 +18,12 @@ function LoginComponent() {
 
 
     useEffect(() => {
-        if (isAuthenticated) {
+        if (isAuthenticated && isLoggedIn) {
             navigate("/perfil");
         }
     }, [isAuthenticated]);
+
+
 
 
 

@@ -12,17 +12,18 @@ function RegisterComponent() {
   const { register, handleSubmit, formState: {
     errors
   } } = useForm();
-  const { signUp, isAuthenticated, error, user } = useAuth();
+  const { signUp, isAuthenticated, error, user, isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
 
 
-
   useEffect(() => {
+    console.log('isAuthenticated:', isAuthenticated);
     if (isAuthenticated) {
-      navigate('/perfil')
+      console.log('Navigating to /perfil');
+      navigate('/perfil');
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -32,8 +33,10 @@ function RegisterComponent() {
 
 
         <form onSubmit={handleSubmit(async (values) => {
-          console.log(values)
-          signUp(values)
+          console.log('Form values:', values);
+          console.log('Signing up...');
+          await signUp(values);
+          console.log('Sign up complete');
         })} className="w-4/6 flex justify-center items-center flex-col my-5 rounded-md">
           <div className='w-6/12 mt-5'>
             <div className="mb-2 block">
