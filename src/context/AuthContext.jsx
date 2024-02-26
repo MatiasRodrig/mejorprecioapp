@@ -59,12 +59,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         async function checkLogin() {
             const cookies = Cookies.get();
-            if (!cookies.token) {
-                setIsAuthenticated(false)
-                setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si no hay token
-                setLoading(false)
-                return setUser(null)
-            }
+           // if (!cookies.token) {
+             //   setIsAuthenticated(false)
+               // setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si no hay token
+               // setLoading(false)
+               // return setUser(null)
+             // }
             try {
                 const res = await verifyTokenRequest(cookies)
                 if (!res.data) {
@@ -77,6 +77,7 @@ export const AuthProvider = ({ children }) => {
                 setIsLoggedIn(true) // Establece isLoggedIn a true si la verificación es exitosa
                 setUser(res.data)
                 setLoading(false)
+                console.log(loading)
             } catch (error) {
                 setIsAuthenticated(false)
                 setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si hay un error
