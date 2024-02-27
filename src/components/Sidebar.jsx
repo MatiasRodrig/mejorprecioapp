@@ -1,9 +1,10 @@
 'use client';
 
 import { Sidebar } from 'flowbite-react';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards, HiLogin, HiLogout } from 'react-icons/hi';
 import Icon from '../assets/icon.svg'
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom'
 
 function SidebarComponent() {
 
@@ -13,35 +14,60 @@ function SidebarComponent() {
         <div>
             <Sidebar aria-label="Sidebar with logo branding example">
                 <Sidebar.Logo href="#" img={Icon} imgAlt="Flowbite logo">
-                    
                     MejorPrecio
                 </Sidebar.Logo>
                 <Sidebar.Items>
-                    <Sidebar.ItemGroup> 
-                        <Sidebar.Item href="/" icon={HiChartPie}>
-                            Inicio
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiViewBoards}>
-                            Precios
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiInbox}>
-                            Mercados
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiUser}>
-                           Ventas en Colonias
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiShoppingBag}>
-                            Productos
-                        </Sidebar.Item>
-                        <Sidebar.Item href="/register" icon={HiTable}>
-                            Registarse
-                        </Sidebar.Item>
-                        <Sidebar.Item href="/login" icon={HiArrowSmRight}>
-                            Iniciar Sesión
-                        </Sidebar.Item>
-                        <Sidebar.Item href='/' onClick={() => logout()} icon={HiArrowSmRight}>
-                            Cerrar Sesión
-                        </Sidebar.Item>
+
+                    <Sidebar.ItemGroup>
+
+                        <Link to='/'>
+                            <Sidebar.Item icon={HiChartPie}>
+                                Inicio
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to=''>
+                            <Sidebar.Item icon={HiViewBoards}>
+                                Precios
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to=''>
+                            <Sidebar.Item  icon={HiInbox}>
+                                Mercados
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link>
+                            <Sidebar.Item  icon={HiUser}>
+                                Ventas en Colonias
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to=''>
+                            <Sidebar.Item icon={HiShoppingBag}>
+                                Productos
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to='/register'>
+                            <Sidebar.Item icon={HiTable}>
+                                Registarse
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to='/login'>
+                            <Sidebar.Item icon={HiLogin}>
+                                Iniciar Sesión
+                            </Sidebar.Item>
+                        </Link>
+
+                        <Link to='/'  >
+                            <Sidebar.Item onClick={() => logout()} icon={HiLogout}>
+                                Cerrar Sesión
+                            </Sidebar.Item>
+                        </Link>
+
                     </Sidebar.ItemGroup>
                 </Sidebar.Items>
             </Sidebar>

@@ -16,13 +16,27 @@ function NavbarComponent() {
                 </Button>
             </div>
             <Navbar.Collapse className=" md:hidden" >
-                <Navbar.Link href="#" active>
-                    Inicio
-                </Navbar.Link>
-                <Navbar.Link href="#">Info</Navbar.Link>
-                <Navbar.Link href="#">Servicios</Navbar.Link>
-                <Navbar.Link href="#">Precios</Navbar.Link>
-                <Navbar.Link href="#">Contacto</Navbar.Link>
+                <Link>
+                    <Navbar.Link active>
+                        Inicio
+                    </Navbar.Link>
+                </Link>
+                
+                <Link>
+                    <Navbar.Link>Info</Navbar.Link>
+                </Link>
+
+                <Link>
+                    <Navbar.Link>Servicios</Navbar.Link>
+                </Link>
+
+                <Link>
+                    <Navbar.Link>Precios</Navbar.Link>
+                </Link>
+
+                <Link>
+                    <Navbar.Link>Contacto</Navbar.Link>
+                </Link>
             </Navbar.Collapse>
         </Navbar>
     );
