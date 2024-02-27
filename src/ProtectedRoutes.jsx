@@ -1,17 +1,10 @@
-import React from 'react'
-import { useAuth } from './context/AuthContext';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "./context/AuthContext.jsx";
 
-function ProtectedRoutes() {
+export const ProtectedRoute = () => {
+  const { isAuthenticated, loading } = useAuth();
 
-  const { loading, isAuthenticated } = useAuth()
-
-  if(loading) return <h1>Cargando...</h1>
-  if (!loading && !isAuthenticated) return <Navigate to='/login' replace/>
-
-  return (
-    <Outlet/>
-  )
-}
-
-export default ProtectedRoutes
+  if (loading) return <h1>Loading...</h1>;
+  if (!isAuthenticated && !loading) return <Navigate to="/login" replace />;
+  return <Outlet />;
+};

@@ -7,7 +7,7 @@ import PerfilPage from './pages/Perfil';
 import { AuthProvider } from './context/AuthContext';
 import AddProductsPage from './pages/AddProductsPage';
 import AddVentasPage from './pages/AddVentasPage';
-import ProtectedRoutes from './ProtectedRoutes';
+import { ProtectedRoute } from './ProtectedRoutes';
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
             <Route />
 
 
-            <Route element={<ProtectedRoutes />}>
+            <Route element={<ProtectedRoute />}>
               <Route path='/perfil' element={<PerfilPage />} />
               <Route path='/agregarproducto' element={<AddProductsPage />} />
               <Route path='/agregarventa' element={<AddVentasPage />} />

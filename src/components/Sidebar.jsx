@@ -3,8 +3,12 @@
 import { Sidebar } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import Icon from '../assets/icon.svg'
+import { useAuth } from '../context/AuthContext';
 
 function SidebarComponent() {
+
+    const { logout } = useAuth()
+
     return (
         <div>
             <Sidebar aria-label="Sidebar with logo branding example">
@@ -29,11 +33,14 @@ function SidebarComponent() {
                         <Sidebar.Item href="#" icon={HiShoppingBag}>
                             Productos
                         </Sidebar.Item>
+                        <Sidebar.Item href="/register" icon={HiTable}>
+                            Registarse
+                        </Sidebar.Item>
                         <Sidebar.Item href="/login" icon={HiArrowSmRight}>
                             Iniciar Sesión
                         </Sidebar.Item>
-                        <Sidebar.Item href="/register" icon={HiTable}>
-                            Registarse
+                        <Sidebar.Item href='/' onClick={() => logout()} icon={HiArrowSmRight}>
+                            Cerrar Sesión
                         </Sidebar.Item>
                     </Sidebar.ItemGroup>
                 </Sidebar.Items>

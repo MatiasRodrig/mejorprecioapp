@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { registerRequest, loginRequest, verifyTokenRequest } from '../api/auth.js'
+import { registerRequest, loginRequest, verifyTokenRequest, logoutRequest } from '../api/auth.js'
 import Cookies from "js-cookie";
 
 
@@ -46,48 +46,43 @@ export const AuthProvider = ({ children }) => {
     const signIn = async (user) => {
         try {
             const res = await loginRequest(user);
-            setIsAuthenticated(true);
-            setIsLoggedIn(true);
             setUser(res.data);
+            setIsAuthenticated(true);
         } catch (error) {
             console.log(error);
             // setErrors(error.response.data.message);
         }
     };
 
+    const logout = () => {
+        Cookies.remove("token");
+        setUser(null);
+        setIsAuthenticated(false);
+    };
 
     useEffect(() => {
-        async function checkLogin() {
+        const checkLogin = async () => {
             const cookies = Cookies.get();
-           // if (!cookies.token) {
-             //   setIsAuthenticated(false)
-               // setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si no hay token
-               // setLoading(false)
-               // return setUser(null)
-             // }
-            try {
-                const res = await verifyTokenRequest(cookies)
-                if (!res.data) {
-                    setIsAuthenticated(false)
-                    setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si la verificación falla
-                    setLoading(false)
-                    return
-                }
-                setIsAuthenticated(true)
-                setIsLoggedIn(true) // Establece isLoggedIn a true si la verificación es exitosa
-                setUser(res.data)
-                setLoading(false)
-                console.log(loading)
-            } catch (error) {
-                setIsAuthenticated(false)
-                setIsLoggedIn(false) // Asegúrate de que isLoggedIn se establece a false si hay un error
-                setUser(null)
-                setLoading(false)
+            if (!cookies.token) {
+                setIsAuthenticated(false);
+                setLoading(false);
+                return;
             }
-        }
 
+            try {
+                const res = await verifyTokenRequest(cookies.token);
+                console.log(res);
+                if (!res.data) return setIsAuthenticated(false);
+                setIsAuthenticated(true);
+                setUser(res.data);
+                setLoading(false);
+            } catch (error) {
+                setIsAuthenticated(false);
+                setLoading(false);
+            }
+        };
         checkLogin();
-    }, [isLoggedIn]); // Añade isLoggedIn a las dependencias del efecto
+    }, []);
 
 
     return (
@@ -98,7 +93,8 @@ export const AuthProvider = ({ children }) => {
             error,
             signIn,
             loading,
-            isLoggedIn
+            isLoggedIn,
+            logout
         }}>
             {children}
         </AuthContext.Provider>
