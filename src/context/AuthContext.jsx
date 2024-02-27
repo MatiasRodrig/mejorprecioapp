@@ -48,9 +48,10 @@ export const AuthProvider = ({ children }) => {
             const res = await loginRequest(user);
             setUser(res.data);
             setIsAuthenticated(true);
+            setIsLoggedIn(true) // Si da error, quitar
         } catch (error) {
             console.log(error);
-            // setErrors(error.response.data.message);
+            setIsLoggedIn(false) // Si da error, quitar
         }
     };
 

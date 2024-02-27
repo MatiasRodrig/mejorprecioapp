@@ -12,7 +12,6 @@ function Perfil() {
                 <div className='w-full'>
                     <div>
                         <Navbar />
-                        
                     </div>
                     <div>
                       <h1>Perfil</h1>

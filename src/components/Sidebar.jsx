@@ -44,9 +44,9 @@ function SidebarComponent() {
                             </Sidebar.Item>
                         </Link>
 
-                        <Link to=''>
+                        <Link to='/perfil'>
                             <Sidebar.Item icon={HiShoppingBag}>
-                                Productos
+                                Perfil
                             </Sidebar.Item>
                         </Link>
 
